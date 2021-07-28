@@ -178,117 +178,114 @@ def choose_first():
          return player2
 
 
-def whos_go(one_or_two):
-    if one_or_two == 1:
-        return 2
+def whos_go(one_or_two): # determine which players go it is
+    if one_or_two == 1: # if player 1 has had his go
+        return 2 # it is now player 2's go
     else:
         return 1
 
 
-def win_check(board, game_won):
-    if board[9] == 'X' and board[8] == 'X' and board[7] == 'X':
+def win_check(board, game_won): # function to check if game has been won
+    if board[9] == 'X' and board[8] == 'X' and board[7] == 'X': # across the top
         print("Player 1 is the winner!")
         return True
 
-    if board[6] == 'X' and board[5] == 'X' and board[4] == 'X':
+    if board[6] == 'X' and board[5] == 'X' and board[4] == 'X': # across the middle
         print("Player 1 is the winner!")
         return True
 
-    if board[3] == 'X' and board[2] == 'X' and board[1] == 'X':
+    if board[3] == 'X' and board[2] == 'X' and board[1] == 'X': # accross the bottom
         print("Player 1 is the winner!")
         return True
 
-    if board[3] == 'X' and board[5] == 'X' and board[7] == 'X':
+    if board[3] == 'X' and board[5] == 'X' and board[7] == 'X': # diagonally
         print("Player 1 is the winner!")
         return True
 
-    if board[2] == 'X' and board[5] == 'X' and board[8] == 'X':
+    if board[2] == 'X' and board[5] == 'X' and board[8] == 'X': # down the middle
         print("Player 1 is the winner!")
         return True
 
-    if board[9] == 'X' and board[6] == 'X' and board[3] == 'X':
+    if board[9] == 'X' and board[6] == 'X' and board[3] == 'X': # down the right side
         print("Player 1 is the winner!")
         return True
 
-    if board[9] == 'X' and board[5] == 'X' and board[1] == 'X':
+    if board[9] == 'X' and board[5] == 'X' and board[1] == 'X': #diagonally the opposite way
         print("Player 1 is the winner!")
         return True
 
-    if board[1] == 'X' and board[4] == 'X' and board[7] == 'X':
+    if board[1] == 'X' and board[4] == 'X' and board[7] == 'X': # up the left
         print("Player 1 is the winner!")
         return True
 
-    if board[9] == 'O' and board[8] == 'O' and board[7] == 'O':
+    if board[9] == 'O' and board[8] == 'O' and board[7] == 'O': # across the top
         print("Player 2 is the winner!")
         return True
 
-    if board[6] == 'O' and board[5] == 'O' and board[4] == 'O':
+    if board[6] == 'O' and board[5] == 'O' and board[4] == 'O': # across the middle
         print("Player 2 is the winner!")
         return True
 
-    if board[3] == 'O' and board[2] == 'O' and board[1] == 'O':
+    if board[3] == 'O' and board[2] == 'O' and board[1] == 'O': # across the bottom
         print("Player 2 is the winner!")
         return True
 
-    if board[3] == 'O' and board[5] == 'O' and board[7] == 'O':
+    if board[3] == 'O' and board[5] == 'O' and board[7] == 'O': # diagonally
         print("Player 2 is the winner!")
         return True
 
-    if board[9] == 'O' and board[5] == 'O' and board[1] == 'O':
+    if board[9] == 'O' and board[5] == 'O' and board[1] == 'O': # diagonally the other way
         print("Player 2 is the winner!")
         return True
 
-    if board[8] == 'O' and board[5] == 'O' and board[2] == 'O':
+    if board[8] == 'O' and board[5] == 'O' and board[2] == 'O': # down the middle
         print("Player 2 is the winner!")
         return True
 
-    if board[7] == 'O' and board[4] == 'O' and board[1] == 'O':
+    if board[7] == 'O' and board[4] == 'O' and board[1] == 'O': # down the left side
         print("Player 2 is the winner!")
         return True
 
-    if board[9] == 'O' and board[6] == 'O' and board[3] == 'O':
+    if board[9] == 'O' and board[6] == 'O' and board[3] == 'O': # down the right side
         print("Player 2 is the winner!")
 
         return True
     else:
         return False
 
-while True:
+while True: # logic code to run the game
 
 
     print('Welcome')
     board = [" # ", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-    check_space = 3
-    p_input = 0
+    check_space = 3 # set the check space variable
+    p_input = 0 # set the p_input variable
 
-    player_position = choose_first()
-    print('player position is ', player_position)
+    player = choose_first() # set player_position to choose first which chooses who goes first
+    #print('player position is ', player)
 
-    # if 3>7:
-    # game_over=True
-    # else:
-    # game_over=False
 
-    play_game = input('Are you ready to play? Enter Yes or No.')
 
-    if play_game.lower()[0] == 'y':
+    play_game = input('Are you ready to play? Enter Yes or No.') # ask the user if they are ready to play
+
+    if play_game.lower()[0] == 'y': # if the first letter of input is y then set game_over to false which triggers the while loop
         game_over = False
     else:
         game_over = True
 
     while game_over == False:
-        display_board(board)
-        p_input = player_input(player_position)
-        check_space = space_check(board, check_space, p_input)
+        display_board(board) # display the game board
+        p_input = player_input(player) # pass the player  variable into the player_input function and set it to p_input. If player_position is set to 1 then an X will be placed, otherwise O will be placed.
+        check_space = space_check(board, check_space, p_input) # check to see if the space that the user has chosen is free
         if check_space == 1 or check_space == 2:
 
-           check_space = 0  # reset check space variable
+           check_space = 0  # reset check space variable if a space is full
            continue  # if check space returns 1 or 2 that means the space is taken and then continue cause the player_input() function to be called again
         else:
-            place_marker(board, player_position, p_input)
+            place_marker(board, player, p_input) # if the space is free put the marker on the board
 
-            player_position = whos_go(player_position)
+            player = whos_go(player) # call the whos_go function and it set it to player
             # print("Check space is initially ", check_space)
             game_over = win_check(board, game_over)
             check_space = 0 # reset check_space to 0
@@ -297,7 +294,7 @@ while True:
 
                 print("Stalemate!")
 
-    if not replay():
+    if not replay(): # if the user does not want to replay break out of the loop
         break
 
 
